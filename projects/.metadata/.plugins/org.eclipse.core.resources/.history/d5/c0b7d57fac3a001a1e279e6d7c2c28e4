@@ -91,21 +91,6 @@ public class bbsDAO {
 		}
 		return list; //데이터베이스 오류
 	}
-	
-	public boolean nextPage(int pageNumber) {
-		String SQL = "select * from BBS where bbsID < ? and bbsAvailable = 1";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				return true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false; 
-	}
 }
 	
 
